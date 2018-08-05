@@ -21,8 +21,7 @@ class Canvas extends Component {
         `
        }
     });
-    document.getElementById("canvas").innerHTML = template;  
-      
+    document.getElementById("canvas").innerHTML = template; 
   }
 
   handleClick(e) {
@@ -65,8 +64,6 @@ class Canvas extends Component {
 
             document.getElementById(element).innerHTML = numInPos;
             document.getElementById(element).className = "cell";
-
-
         }
       });
   }
