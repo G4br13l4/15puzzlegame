@@ -3,6 +3,7 @@ import './App.css';
 import Canvas from './Canvas';
 
 class App extends Component {
+
   componentWillMount() {
     document.addEventListener("keydown", this.onKeyPressed.bind(this));
   }
@@ -12,7 +13,8 @@ class App extends Component {
   }      
 
   onKeyPressed(e) {
-    console.log(e.keyCode);
+    console.log(e.keyCode); 
+    this.refs.canvas.handleKeyPressed();
   }   
 
   render() {
@@ -23,7 +25,7 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">15 Puzzle Game</h1>
         </header>
-        <Canvas/>
+        <Canvas ref="canvas"/>
       </div>
       
     );

@@ -68,6 +68,10 @@ class Canvas extends Component {
       });
   }
 
+  handleKeyPressed(){
+      console.log("it works");
+  }
+
   render() {
     return (
         <div className="row">
