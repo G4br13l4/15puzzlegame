@@ -39,7 +39,7 @@
   box-sizing: border-box;
 }
 
-#canvas{
+#board{
   width: 400px;
   height: auto;
   display: flex;

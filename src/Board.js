@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Canvas extends Component {
+class Board extends Component {
 
   componentDidMount() {
     let board = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,0];
@@ -21,7 +21,7 @@ class Canvas extends Component {
         `
        }
     });
-    document.getElementById("canvas").innerHTML = template; 
+    document.getElementById("board").innerHTML = template; 
   }
 
   handleClick(e) {
@@ -30,25 +30,25 @@ class Canvas extends Component {
     let numInPos = e.target.innerHTML;
     let posibPos = [];
     
-    //evento al dar arriba
+    //evento al dar click arriba
     if(position >= 5 && position <=16){
         let up = document.getElementById(`${position - 4}`).id;
         posibPos.push(up);    
     }
 
-    //evento al dar abajo
+    //evento al dar click abajo
     if(position >= 1 && position <=12){
         let down = document.getElementById(`${position + 4}`).id;
         posibPos.push(down);
     }
 
-    //evento al dar a la derecha
+    //evento al dar click a la derecha
     if(position % 4 !== 0 ){
         let rig = document.getElementById(`${position + 1}`).id;
         posibPos.push(rig);
     }
     
-    //evento al dar a la izquierda
+    //evento al dar click a la izquierda
     if(position !== 1 && position !== 5 && position !== 9 && position !== 13){
         let lef = document.getElementById(`${position - 1}`).id;
         posibPos.push(lef);
@@ -68,18 +68,14 @@ class Canvas extends Component {
       });
   }
 
-  handleKeyPressed(){
-      console.log("it works");
-  }
-
   render() {
     return (
         <div className="row">
-            <div id="canvas" onClick={this.handleClick}>
+            <div id="board" onClick={this.handleClick}>
             </div>
         </div>
     );
   }
 }
 
-export default Canvas;
+export default Board;
