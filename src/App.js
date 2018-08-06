@@ -13,6 +13,8 @@ class App extends Component {
   }      
 
   onKeyPressed(e) {
+    //detener se llame dos veces
+    e.stopImmediatePropagation();
     //variables
     let keyPressed = e.keyCode;
     let board = document.querySelectorAll("#board div");
@@ -59,7 +61,7 @@ class App extends Component {
     return (
       
       <div className="App" onKeyDown={this.onKeyPressed}
-      tabIndex="0">
+      tabIndex="1">
         <header className="App-header">
           <h1 className="App-title">15 Puzzle Game</h1>
         </header>
