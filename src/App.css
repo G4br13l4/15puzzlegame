@@ -1,20 +1,20 @@
 .App {
   text-align: center;
+  box-sizing: border-box;
 }
 
 .App-header {
   background-color: #222;
   height: 10vh;
-  padding: 20px;
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .App-title {
   font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
+  margin: 0;
 }
 
 .cell{
@@ -27,6 +27,14 @@
   justify-content: center;
 }
 
+.shake {
+  animation: shake;
+  animation-duration: 2s;
+}
+
+@keyframes shake {
+  50% { transform: scale(0.95,0.95);}
+}
 .empty-cell{
   height: 100px;
   width: 100px;
@@ -35,13 +43,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: solid 1px black;
-  box-sizing: border-box;
 }
 
 #board{
   width: 400px;
-  height: auto;
+  height: 400px;
   display: flex;
   flex-wrap: wrap;
 }
@@ -49,5 +55,10 @@
 .row {
   display: flex;
   justify-content: center;
-  margin-top: 2%;
+  background: blueviolet;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+

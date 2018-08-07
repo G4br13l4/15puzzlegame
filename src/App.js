@@ -50,11 +50,13 @@ class App extends Component {
     //cambiando posicion
     if(position !== 0 && newPos !==0){
       document.getElementById(position).innerHTML = document.getElementById(newPos).innerHTML;
-      document.getElementById(position).className = "cell";
+      document.getElementById(position).classList.add("cell","shake");
+      document.getElementById(position).classList.remove("empty-cell");
 
       document.getElementById(newPos).innerHTML = numInPos;
-      document.getElementById(newPos).className = "empty-cell";
-    }
+      document.getElementById(newPos).classList.add("empty-cell");
+      document.getElementById(newPos).classList.remove("cell","shake");
+    } 
   }   
 
   render() {
@@ -65,7 +67,10 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">15 Puzzle Game</h1>
         </header>
-        <Board/>
+        <div className="row">
+          <Board/>
+        </div>
+       
       </div>
       
     );
