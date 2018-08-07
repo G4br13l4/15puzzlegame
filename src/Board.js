@@ -1,10 +1,22 @@
 import React, { Component } from 'react';
 
 class Board extends Component {
+    do(){
+        console.log("fi")
+    }
 
   componentDidMount() {
    
     let numbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,0];
+   
+    //Algoritmo Fisher Yates
+    for (var i = numbers.length -1; i > 1; i--){
+        let pick = Math.floor(i * Math.random()); //obtener random index
+        let temp = numbers[i]; // guardar valor de actual posicion
+        numbers[i] = numbers[pick]; // guardar valor random en posicion actual
+        numbers[pick] = temp; // guardar valor actual en posicion random
+    }
+    
     let template = ``;
     //painting board
     numbers.forEach(function(element,index) {

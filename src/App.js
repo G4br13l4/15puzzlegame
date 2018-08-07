@@ -59,6 +59,10 @@ class App extends Component {
     } 
   }   
 
+  init(){
+    console.log("algo")
+  }
+
   render() {
     return (
       
@@ -67,10 +71,13 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">15 Puzzle Game</h1>
         </header>
-        <div className="row">
-          <Board/>
+        <div>
+            <button onClick={this.init}>Iniciar</button>
+            <button>Reiniciar</button>
         </div>
-       
+        <div className="row">
+          <Board ref="board"/>
+        </div>
       </div>
       
     );
