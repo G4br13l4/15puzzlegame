@@ -7,6 +7,7 @@ class Board extends Component {
             initBoard:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,0],
             randBoard: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,0], 
         };
+        this.handleClick = this.handleClick.bind(this);
     }
 
     componentDidMount() {
@@ -19,13 +20,13 @@ class Board extends Component {
         numbers.forEach(function(element,index) {
         if(element === 0){
                 template += `
-                <div class="empty-cell" id=${index + 1}>
+                <div class="cell empty-cell" id=${index + 1}>
                     ${element}
                 </div>
             `
         }else{
                 template += `
-                <div class="cell" id=${index + 1}>
+                <div class="cell full-cell" id=${index + 1}>
                     ${element}
                 </div>
             `
@@ -51,7 +52,7 @@ class Board extends Component {
     }
 
     handleClick(e) {
-  
+    
     //variables
     let position = parseInt(e.target.id);
     let numInPos = e.target.innerHTML;
@@ -88,13 +89,30 @@ class Board extends Component {
             //intercambiar posicion (actual a nueva)
             document.getElementById(position).innerHTML = newPos;
             document.getElementById(position).classList.add("empty-cell");
-            document.getElementById(position).classList.remove("cell", "shake");
+            document.getElementById(position).classList.remove("full-cell", "shake");
 
             document.getElementById(element).innerHTML = numInPos;
-            document.getElementById(element).classList.add("cell", "shake");
+            document.getElementById(element).classList.add("full-cell", "shake");
             document.getElementById(element).classList.remove("empty-cell");
         }
       });
+      this.win();
+    }
+
+    win(){
+        let board = document.querySelectorAll("#board div");
+        let counter = 0;
+        board.forEach(function(element) {
+            let num = parseInt(element.innerHTML);
+            let id = parseInt(element.id);
+            if(num == id){
+                counter ++;
+            }
+        });
+        if(counter == "15"){
+            let modal = document.getElementsByClassName("myModal")[0];
+            modal.style.display = "block";
+        }
     }
 
     render() {

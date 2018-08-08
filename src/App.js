@@ -7,6 +7,7 @@ class App extends Component {
     super(props);
     this.start = this.start.bind(this); //porque llaman al metodo de componente hijo
     this.restart = this.restart.bind(this);
+    this.onKeyPressed = this.onKeyPressed.bind(this);
   }
   
   componentWillMount() {
@@ -55,13 +56,15 @@ class App extends Component {
     //cambiando posicion
     if(position !== 0 && newPos !==0){
       document.getElementById(position).innerHTML = document.getElementById(newPos).innerHTML;
-      document.getElementById(position).classList.add("cell","shake");
+      document.getElementById(position).classList.add("full-cell","shake");
       document.getElementById(position).classList.remove("empty-cell");
 
       document.getElementById(newPos).innerHTML = numInPos;
       document.getElementById(newPos).classList.add("empty-cell");
-      document.getElementById(newPos).classList.remove("cell","shake");
+      document.getElementById(newPos).classList.remove("full-cell","shake");
     } 
+    
+    this.refs.board.win();
   }   
 
   start(){
@@ -73,6 +76,11 @@ class App extends Component {
 
   restart(){
     this.refs.board.randBoard();
+  }
+
+  closeModal(){
+    let modal = document.getElementsByClassName("myModal")[0];
+    modal.style.display = "none";
   }
 
   render() {
@@ -87,6 +95,16 @@ class App extends Component {
             <button onClick={this.start}>Start</button>
             <button onClick={this.restart}>Restart</button>
         </div>
+
+        {/* Modal */}
+        <div className="row">
+          <div className="myModal">
+            <span className="close" onClick={this.closeModal}>&times;</span>
+            <p>YOU WIN!!! </p>
+          </div>
+        </div>
+
+        
         <div className="row row-board">
           <Board ref="board"/>
         </div>

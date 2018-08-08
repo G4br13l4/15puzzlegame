@@ -1,12 +1,11 @@
 .App {
-  text-align: center;
   box-sizing: border-box;
+  color: white;
 }
 
 .App-header {
   background-color: #222;
   height: 10vh;
-  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,11 +19,13 @@
 .cell{
   height: 100px;
   width: 100px;
-  background: black;
-  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.full-cell{
+  background: black;
 }
 
 .shake {
@@ -35,14 +36,9 @@
 @keyframes shake {
   50% { transform: scale(0.95,0.95);}
 }
+
 .empty-cell{
-  height: 100px;
-  width: 100px;
   background: white;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 #board{
@@ -54,9 +50,7 @@
 
 .row {
   display: flex;
-  justify-content: center;
   background: rgb(140, 47, 228);
-  display: flex;
   justify-content: center;
 }
 
@@ -75,7 +69,40 @@ button {
   border-radius: 10%;
   margin: 0% 2%;
   background: rgb(100, 77, 77);
-  color: white;
   width: 8%;
+  color:white;
 }
 
+/* Modal*/
+.myModal {
+  z-index: 1;
+  position: fixed;
+  background-color: #fefefe;
+  border: 1px solid #888;
+  width: 60%;
+  height: auto;
+  font-family: 'Bungee Shade', cursive;
+  font-size: 5em;
+  padding:1%;
+  text-align: center;
+  color: black;
+}
+
+.myModal p {
+  margin:0;
+}
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 0.4em;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
