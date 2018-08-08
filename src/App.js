@@ -3,6 +3,11 @@ import './App.css';
 import Board from './Board';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.start = this.start.bind(this); //porque llaman al metodo de componente hijo
+    this.restart = this.restart.bind(this);
+  }
   
   componentWillMount() {
     document.addEventListener("keydown", this.onKeyPressed.bind(this));
@@ -59,8 +64,15 @@ class App extends Component {
     } 
   }   
 
-  init(){
-    console.log("algo")
+  start(){
+    this.refs.board.initBoard();
+    setTimeout(function() {
+       this.restart();
+    }.bind(this), 2000); 
+  }
+
+  restart(){
+    this.refs.board.randBoard();
   }
 
   render() {
@@ -71,11 +83,11 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">15 Puzzle Game</h1>
         </header>
-        <div>
-            <button onClick={this.init}>Iniciar</button>
-            <button>Reiniciar</button>
+        <div className="row row-btns" >
+            <button onClick={this.start}>Start</button>
+            <button onClick={this.restart}>Restart</button>
         </div>
-        <div className="row">
+        <div className="row row-board">
           <Board ref="board"/>
         </div>
       </div>

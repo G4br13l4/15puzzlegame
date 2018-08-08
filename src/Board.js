@@ -1,43 +1,56 @@
 import React, { Component } from 'react';
 
 class Board extends Component {
-    do(){
-        console.log("fi")
+    constructor(props) {
+        super(props);
+        this.state = {
+            initBoard:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,0],
+            randBoard: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,0], 
+        };
     }
 
-  componentDidMount() {
-   
-    let numbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,0];
-   
-    //Algoritmo Fisher Yates
-    for (var i = numbers.length -1; i > 1; i--){
-        let pick = Math.floor(i * Math.random()); //obtener random index
-        let temp = numbers[i]; // guardar valor de actual posicion
-        numbers[i] = numbers[pick]; // guardar valor random en posicion actual
-        numbers[pick] = temp; // guardar valor actual en posicion random
+    componentDidMount() {
+        this.initBoard();
     }
-    
-    let template = ``;
-    //painting board
-    numbers.forEach(function(element,index) {
-       if(element === 0){
-            template += `
-            <div class="empty-cell" id=${index + 1}>
-                ${element}
-            </div>
-        `
-       }else{
-            template += `
-            <div class="cell" id=${index + 1}>
-                ${element}
-            </div>
-        `
-       }
-    });
-    document.getElementById("board").innerHTML = template;
-  }
 
-  handleClick(e) {
+    paintBoard(numbers){
+        let template = ``;
+        //painting board
+        numbers.forEach(function(element,index) {
+        if(element === 0){
+                template += `
+                <div class="empty-cell" id=${index + 1}>
+                    ${element}
+                </div>
+            `
+        }else{
+                template += `
+                <div class="cell" id=${index + 1}>
+                    ${element}
+                </div>
+            `
+        }
+        });
+        document.getElementById("board").innerHTML = template;
+    }
+
+    initBoard(){
+       this.paintBoard(this.state.initBoard);
+    }
+
+    randBoard(){
+        let numbers = this.state.randBoard;
+        //Algoritmo Fisher Yates
+        for (var i = numbers.length -1; i > 1; i--){
+            let pick = Math.floor(i * Math.random()); //obtener random index
+            let temp = numbers[i]; // guardar valor de actual posicion
+            numbers[i] = numbers[pick]; // guardar valor random en posicion actual
+            numbers[pick] = temp; // guardar valor actual en posicion random
+        }
+        this.paintBoard(numbers);
+    }
+
+    handleClick(e) {
   
     //variables
     let position = parseInt(e.target.id);
@@ -82,14 +95,14 @@ class Board extends Component {
             document.getElementById(element).classList.remove("empty-cell");
         }
       });
-  }
+    }
 
-  render() {
-    return (
-        <div id="board" onClick={this.handleClick}>
-        </div>
-    );
-  }
+    render() {
+        return (
+            <div id="board" onClick={this.handleClick}>
+            </div>
+        );
+    }
 }
 
 export default Board;

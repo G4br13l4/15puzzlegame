@@ -55,10 +55,27 @@
 .row {
   display: flex;
   justify-content: center;
-  background: blueviolet;
-  height: 90vh;
+  background: rgb(140, 47, 228);
   display: flex;
-  align-items: center;
   justify-content: center;
+}
+
+.row-btns {
+  height: 15vh;
+  align-items: center;
+}
+
+.row-board{
+  height: 75vh;
+}
+
+button {
+  height: 6vh;
+  font-family: 'Bungee', cursive;
+  border-radius: 10%;
+  margin: 0% 2%;
+  background: rgb(100, 77, 77);
+  color: white;
+  width: 8%;
 }
 
