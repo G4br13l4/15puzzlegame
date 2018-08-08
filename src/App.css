@@ -75,25 +75,30 @@ button {
 
 /* Modal*/
 .myModal {
+  display: none;
   z-index: 1;
   position: fixed;
-  background-color: #fefefe;
+  background-image: url("https://media.giphy.com/media/zaDi0mXkYM3eg/giphy.gif");
+  background-size: cover;
+  background-position: center;
   border: 1px solid #888;
-  width: 60%;
-  height: auto;
+  width: 50%;
+  height: 65vh;
   font-family: 'Bungee Shade', cursive;
   font-size: 5em;
   padding:1%;
   text-align: center;
-  color: black;
 }
 
 .myModal p {
   margin:0;
+  background: black;
+  opacity: 0.5;
+  border-radius: 5%;
 }
 /* The Close Button */
 .close {
-  color: #aaaaaa;
+  color:#000;
   display: flex;
   justify-content: flex-end;
   font-size: 0.4em;

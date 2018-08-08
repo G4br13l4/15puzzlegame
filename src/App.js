@@ -63,7 +63,6 @@ class App extends Component {
       document.getElementById(newPos).classList.add("empty-cell");
       document.getElementById(newPos).classList.remove("full-cell","shake");
     } 
-    
     this.refs.board.win();
   }   
 

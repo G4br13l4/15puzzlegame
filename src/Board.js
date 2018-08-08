@@ -57,7 +57,7 @@ class Board extends Component {
     let position = parseInt(e.target.id);
     let numInPos = e.target.innerHTML;
     let posibPos = [];
-    
+
     //evento al dar click arriba
     if(position >= 5 && position <=16){
         let up = position - 4;
@@ -81,10 +81,10 @@ class Board extends Component {
         let lef = position - 1;
         posibPos.push(lef);
     }
-    
+
     posibPos.forEach(function(element) {
         let newPos = document.getElementById(element).innerHTML;
-    
+        
         if(newPos == 0){
             //intercambiar posicion (actual a nueva)
             document.getElementById(position).innerHTML = newPos;
